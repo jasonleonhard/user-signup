@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="panel panel-primary">
+    <div class="panel-heading pad_left">
+        {% if username %}
+            <h1> Welcome, {{username}} !</h1>
+        {% else %}
+            <h1> Welcome</h1>
+        {% endif %}
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <ul>
+                        <li><a href="/"> <span class="label label-default">home</span></a></li>
+                        <li><a href="/signup"> <span class="label label-default">signup</span></a></li>
+                        <li><a href="/encrypt"> <span class="label label-default">encrypt</span></a></li>
+                        <li><a href="/color"> <span class="label label-default">color</span></a></li>
+                        <li><a href="/sounds"> <span class="label label-default">sounds</span></a></li>
+                        <!--<li><a href="/sound"> <span class="label label-default">sound</span></a></li>-->
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock  %}

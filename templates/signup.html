@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-xs-3"></div>
+<div class="col-xs-6">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1>Signup</h1>
+        </div>
+        <div class="panel-body">
+            <div class="col-xs-12">
+               <form class="form-horizontal">
+                    <div class="form-group">
+                        <div>
+                            <input class='form-control' type="text" name="username" value="{{username}}">
+                            <label class="col-form-label" for="username" class="maybe">Username</label>
+                        </div>
+                            <strong class='left error' value="{{username_error}}">{{username_error}}</strong>
+
+                        <div>
+                            <input class='form-control' type='password' name="password" value="{{password}}">
+                            <label class="col-form-label" for="Password" class="maybe">Password</label>
+                        </div>
+                            <strong class='left error' value="{{password_error}}">{{password_error}}</strong>
+
+                        <div>
+                            <input class='form-control' type="password" name="verify" value="{{verify}}">
+                            <label class="col-form-label" for="verify" class="maybe">Verify Password</label>
+                        </div>
+                            <strong class='left error' value="{{verify_error}}">{{verify_error}}</strong>
+
+                        <div>
+                            <input class='form-control' type='text' name="email" value="{{email}}">
+                            <label class="col-form-label" for="email">Email (optional)</label>
+                        </div>
+
+                        <div>
+                            <strong class='error' value="{{email_error}}">{{email_error}}</strong>
+                        </div>
+
+                        <input class='btn btn-primary' type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-xs-3"></div>
+{% endblock %}

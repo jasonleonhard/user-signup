@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="#" onmousedown="selectAndPlay(directory_list, 0);" class="btn btn-primary btn-lg">brokenglass</a>
+<a href="#" onmousedown="selectAndPlay(directory_list, 1);" class="btn btn-primary btn-lg">machinegun</a>
+<a href="#" onmousedown="selectAndPlay(directory_list, 2);" class="btn btn-primary btn-lg">pindrop</a>
+<a href="#" onmousedown="selectAndPlay(directory_list, 3);" class="btn btn-primary btn-lg">rotaryphone</a>
+<a href="#" onmousedown="selectAndPlay(directory_list, 4);" class="btn btn-primary btn-lg">saw</a>
+<a href="#" onmousedown="selectAndPlay(directory_list, 5);" class="btn btn-primary btn-lg">thunder</a>
+<a href="#" onmousedown="selectAndPlay(directory_list, 6);" class="btn btn-primary btn-lg">icecube.wav</a>
+<a href="#" onmousedown="selectAndPlay(directory_list, 7);" class="btn btn-primary btn-lg">marbles</a>
+<a href="#" onmousedown="selectAndPlay(directory_list, 8);" class="btn btn-primary btn-lg">motorcycle</a>
+<a href="#" onmousedown="selectAndPlay(directory_list, 9);" class="btn btn-primary btn-lg">police</a>
+<a href="#" onmousedown="selectAndPlay(directory_list, 10);" class="btn btn-primary btn-lg">roundhouse</a>
+<a href="#" onmousedown="selectAndPlay(directory_list, 11);" class="btn btn-primary btn-lg">sharpenknives</a>
+
+<div id="title"></div>
+<div id="list"></div>
+<div id="sound" class='item'>
+    <!--<img src="https://68.media.tumblr.com/971763294c4d851e8acc1afc92898bec/tumblr_mk1aeldvdb1rvy4abo1_500.gif" alt="Mountain View" style="width:304px;height:228px;">-->
+</div>
+<div id="path"></div>
+<style>
+.sizeIt{
+    width:100%;
+
+    /*width:304px;
+    height:228px;*/
+}
+</style>
+<script>
+    var images = [
+        '<img name="brokenglass" src="../static/gifs/brokenglass.gif" class="sizeIt">',
+        '<img name="machinegun" src="../static/gifs/machinegun.gif" class="sizeIt">',
+        '<img name="pindrop" src="../static/gifs/pindrop.gif" class="sizeIt">',
+        '<img name="rotaryphone" src="../static/gifs/rotaryphone.gif" class="sizeIt">',
+        '<img name="saw" src="../static/gifs/saw.gif" class="sizeIt">',
+        '<img name="thunder" src="../static/gifs/thunder.gif" class="sizeIt">',
+        '<img name="icecube" src="../static/gifs/icecube.gif" class="sizeIt">',
+        '<img name="marbles" src="../static/gifs/marbles.gif" class="sizeIt">',
+        '<img name="motorcycle" src="../static/gifs/motorcycle.gif" class="sizeIt">',
+        '<img name="police" src="../static/gifs/police.gif" class="sizeIt">',
+        '<img name="roundhouse" src="../static/gifs/roundhouse.gif" class="sizeIt">',
+        '<img name="sharpenknives" src="../static/gifs/sharpenknives.gif" class="sizeIt">'
+    ]
+
+// list all files in a directory,
+    // ls static/sounds // or file:///Users/Agency/lc101/user-signup/static/sounds/
+    var sounds = [
+        'brokenglass.mp3',
+        'machinegun.mp3',
+        'pindrop.mp3',
+        'rotaryphone.mp3',
+        'saw.mp3',
+        'thunder.mp3',
+        'icecube.wav',
+        'marbles.mp3',
+        'motorcycle.mp3',
+        'police.mp3',
+        'roundhouse.mp3',
+        'sharpenknives.mp3'
+    ]
+// store them in an array with the path appended to the beginning
+    var directory = '../static/sounds/'
+    var directory_list = [];
+    for (i = 0; i < sounds.length; i++) {
+        var cur = directory+sounds[i];
+        directory_list.push(cur);
+    }
+    // show list in console and in HTML on website
+    // console.log(directory_list);    // whole list
+    // console.log(directory_list[0]); // one sound
+    // var list = document.getElementById('list').innerHTML = directory_list;
+
+    function selectAndPlay(sounds, soundNumber){
+        var sound = new Audio();
+        sound.src = sounds[soundNumber];
+        var soundID = document.getElementById("sound");
+        // soundID.innerHTML = sound.src;             // http://localhost:5000/static/sounds/brokenglass.mp3
+        // soundID.innerHTML = sounds[soundNumber];   // ../static/sounds/brokenglass.mp3
+        // soundID.innerHTML = this.sounds[soundNumber]; // brokenglass.mp3
+
+        // soundID.innerHTML = this.images[soundNumber]; // brokenglass.mp3
+        soundID.innerHTML = images[soundNumber]; // brokenglass.mp3
+
+        sound.play();
+    }
+</script>
+{% endblock  %}

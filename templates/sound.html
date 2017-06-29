@@ -1,0 +1,142 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<a href="#" onmousedown="loadContent(this)" class="btn btn-primary">ice cube</a>
+<!--<a href="#" onmousedown="selectAndPlay(); console.log(this.innerHTML)" class="btn btn-primary">broken glass</a>-->
+<a href="#" onmousedown="selectAndPlay(sounds, 0);" class="btn btn-primary">brokenglass.mp3</a>
+<a href="#" onmousedown="selectAndPlay(sounds, 1);" class="btn btn-primary">machinegun.mp3</a>
+<a href="#" onmousedown="selectAndPlay(sounds, 2);" class="btn btn-primary">melody.wav</a>
+<a href="#" onmousedown="selectAndPlay(sounds, 3);" class="btn btn-primary">pindrop.mp3</a>
+<a href="#" onmousedown="selectAndPlay(sounds, 4);" class="btn btn-primary">rotaryphone.mp3</a>
+<a href="#" onmousedown="selectAndPlay(sounds, 5);" class="btn btn-primary">saw.mp3</a>
+<a href="#" onmousedown="selectAndPlay(sounds, 6);" class="btn btn-primary">thunder.mp3</a>
+<a href="#" onmousedown="selectAndPlay(sounds, 7);" class="btn btn-primary">icecube.wav</a>
+<a href="#" onmousedown="selectAndPlay(sounds, 8);" class="btn btn-primary">marbles.mp3</a>
+<a href="#" onmousedown="selectAndPlay(sounds, 9);" class="btn btn-primary">motorcycle.mp3</a>
+<a href="#" onmousedown="selectAndPlay(sounds, 10);" class="btn btn-primary">police.mp3</a>
+<a href="#" onmousedown="selectAndPlay(sounds, 11);" class="btn btn-primary">roundhouse.mp3</a>
+<a href="#" onmousedown="selectAndPlay(sounds, 12);" class="btn btn-primary">sharpenknives.mp</a>
+<div id="title"></div>
+<div id="list"></div>
+<div id="sound"></div>
+<div id="path"></div>
+<!--####################################################################-->
+<!--simplest way to play sounds-->
+<!--from file-->
+<!--<a href="static/icecube.wav" onmousedown="icecube.play()" class="btn btn-primary">icecube.wav</a>-->
+<!--from url-->
+<!--<a href="http://www.noiseaddicts.com/samples_1w72b820/4930.mp3" onmousedown="icecube.wav" class="btn btn-primary">chirp</a>-->
+<!--####################################################################-->
+<!--<br>-->
+<!--####################################################################-->
+<!--best way is to not go to file, just play it....-->
+                                <!--<link rel="shortcut icon" href="{{ url_for('static', filename='sounds/icecube.wav') }}">-->
+<!--
+                        WORKING SECTION
+    <script>
+    var icecube = new Audio();
+    icecube.src = "../static/sounds/icecube.wav"
+</script>
+<a href="#" onmousedown="icecube.play()" class="btn btn-primary">icecube</a>
+<br>-->
+<!--####################################################################-->
+<!--Plays sound file and load its path/name into a hidden div id-->
+<!--<script>
+    var sound = new Audio();
+    sound.src = "../static/sounds/icecube.wav"
+
+    function loadContent(path_to_file) {
+        // play icecube on button click
+        sound.play();
+        var title = document.getElementById('title');
+
+        // put title in div by id
+        title.innerHTML = path_to_file;
+        console.log(title.innerHTML);
+    }
+</script>
+<a href="#" onmousedown="loadContent(this)" class="btn btn-primary">icecube</a>
+<div id="title"></div>-->
+<!--####################################################################-->
+<script>
+    // var sounds = [
+    //     "../static/sounds/icecube.wav",
+    //     "../static/sounds/brokenglass.mp3",
+    //     "../static/sounds/saw.mp3"
+    // ];
+    var directory = '../static/sounds/'
+    var sounds = [
+        directory+'brokenglass.mp3',
+        directory+'machinegun.mp3',
+        directory+'melody.wav',
+        directory+'pindrop.mp3',
+        directory+'rotaryphone.mp3',
+        directory+'saw.mp3',
+        directory+'thunder.mp3',
+        directory+'icecube.wav',
+        directory+'marbles.mp3',
+        directory+'motorcycle.mp3',
+        directory+'police.mp3',
+        directory+'roundhouse.mp3',
+        directory+'sharpenknives.mp3'
+    ];
+
+    function showSoundList(sounds) {
+        var list = document.getElementById("list").innerHTML = sounds;
+            console.log(sounds);
+            // 0:"../static/sounds/icecube.wav"
+            // 1:"../static/sounds/brokenglass.mp3"
+            // 2:"../static/sounds/saw.mp3"
+        return list
+    }
+
+    function selectSound(sounds, soundNumber) {
+        var sound = new Audio();
+        // sound.src = "../static/sounds/brokenglass.mp3"
+
+        sound.src = sounds[soundNumber];
+        // this is good below
+                    // console.log(sound.src); // http://localhost:5000/static/sounds/brokenglass.mp3 or other song
+            // http://localhost:5000/static/sounds/icecube.wav
+        // var currentSound = document.getElementById("sound").innerHTML = sounds[0];
+
+        // see title on id div
+        // document.getElementById("sound").innerHTML = sound.src;
+
+        var currentSong = document.getElementById("sound").innerHTML = sound.src;
+        // console.log(sound.src)
+        return sound;
+    }
+
+    function loadContent() {
+        // play icecube on button click
+        // var list = showSoundList(sounds);
+        // console.log(list[0])
+            // ../static/sounds/icecube.wav
+        // console.log(list);
+            // 0:"../static/sounds/icecube.wav"
+            // 1:"../static/sounds/brokenglass.mp3"
+            // 2:"../static/sounds/saw.mp3"
+
+        var currentSound = selectSound(sounds, 0);
+        // console.log(currentSound);
+            // http://localhost:5000/static/sounds/icecube.wav
+
+        currentSound.play();
+
+        // // put title in div by id
+        // var title = document.getElementById('title');
+        // title.innerHTML = currentSound.src;
+        // console.log(title.innerHTML);
+    }
+
+    function selectAndPlay(sounds, soundNumber){
+        var sound = new Audio();
+        sound.src = sounds[soundNumber];
+            console.log(sound.src);
+
+        var soundID = document.getElementById("sound");
+            // soundID.innerHTML = sound.src; // not req
+
+        sound.play();
+    }
+
+</script>
