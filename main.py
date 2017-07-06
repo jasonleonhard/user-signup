@@ -46,6 +46,18 @@ def encrypt():
     # option 2
     return render_template('encrypt.html', result_text=result_text, result_rot=result_rot)
 
+@app.route("/signup", methods=['POST'])
+def signup_post(error='', username_error='', password_error='', email_error='', verify_error=''):
+# def signup_post(error='', username='', password='', verify='', email='', username_error='',
+        #    password_error='', email_error='', verify_error=''):
+    # SECTION NOT REQUIRED
+    if request.method == 'POST': # or  elif request.form:
+        username = request.form['username']
+        password = request.form['password']
+        verify = request.form['verify']
+        email = request.form['email']
+    return render_template('welcome.html', username=username)
+
 # @app.route("/signup", methods=['POST', 'GET'])
 @app.route("/signup", methods=['GET'])
 # def signup(error='', username_error='', password_error='', email_error='', verify_error=''):
@@ -65,9 +77,7 @@ def signup(error='', username='', password='', verify='', email='', username_err
     else: # first time user hits page don't validate blank form
         return render_template('signup.html',
                         username=username, password=password, verify=verify,
-                        email=email, error=error, username_error=username_error,
-                        password_error=password_error, email_error=email_error,
-                        verify_error=verify_error)
+                        email=email)
 
     # Validation Section
     if not usersname_length(username):
@@ -113,18 +123,6 @@ def signup(error='', username='', password='', verify='', email='', username_err
 def prac(error='', username='', password='', verify='', email='', username_error='',
            password_error='', email_error='', verify_error=''):
         return '<h1>hi</h1>'
-
-@app.route("/signup", methods=['POST'])
-def signup_post(error='', username_error='', password_error='', email_error='', verify_error=''):
-# def signup_post(error='', username='', password='', verify='', email='', username_error='',
-        #    password_error='', email_error='', verify_error=''):
-    # SECTION NOT REQUIRED
-    if request.method == 'POST': # or  elif request.form:
-        username = request.form['username']
-        password = request.form['password']
-        verify = request.form['verify']
-        email = request.form['email']
-    return render_template('welcome.html', username=username)
 
 # disable browser caching
 @app.after_request
