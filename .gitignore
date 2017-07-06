@@ -93,3 +93,5 @@ ENV/
 
 NOTES
 .DS_Store
+
+.vscode/tags
